@@ -1,0 +1,147 @@
+.header-bg {
+    background-color: var(--cor-12);
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.header-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.header-menu a {
+    display: inline-block;
+    padding: 16px 0px;
+    position: relative;
+}
+
+.header-menu a:after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0px;
+    background: var(--cor-0);
+    margin-top: 4px;
+    transition: 0.3s;
+    position: absolute;
+}
+
+.header-menu a:hover:after,
+.header-menu a.ativo::after {
+    width: 100%;
+}
+
+.btn-menu {
+    display: none;
+}
+
+
+@media (max-width: 800px) {
+
+    .header-menu {
+        height: 0px;
+        display: block;
+        position: absolute;
+        right: 0px;
+        top: 140px;
+        text-align: center;
+        width: 100%;
+        transition: .6s;
+        visibility: hidden;
+        overflow-y: hidden;
+        z-index: 1;
+        background: var(--cor-12);
+    }
+
+    .header-menu li:last-child a {
+        border-color: transparent;
+    }
+
+    .header-menu a {
+        background: var(--cor-12);
+        width: 100%;
+        box-sizing: border-box;
+        padding: 24px 32px;
+        gap: 50px;
+        border-bottom: 2px solid rgba(51, 51, 51, 0.226);
+    }
+
+    .header-menu a:hover {
+        background-color: var(--cor-10);
+    }
+
+    .header a:after {
+        display: none;
+    }
+
+    .btn-menu {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 2rem 2rem;
+        font-size: 1rem;
+        border: none;
+        background: none;
+        cursor: pointer;
+        gap: .5rem;
+        color: var(--color-0);
+    }
+
+    .btn-menu:focus {
+        background: transparent;
+    }
+
+    #hamburguer {
+        width: 30px;
+        display: block;
+        border-top: 2px solid;
+        color: var(--cor-0);
+    }
+
+    #hamburguer::after,
+    #hamburguer::before {
+        content: "";
+        display: block;
+        width: 30px;
+        height: 2px;
+        background: currentColor;
+        margin-top: 5px;
+        position: relative;
+        transition: .3s;
+    }
+
+
+    nav.ativo .header-menu {
+        visibility: visible;
+        height: calc(100vh - 140px);
+
+    }
+
+    header.ativo {
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+    }
+
+    nav.ativo #hamburguer {
+        border-top-color: transparent;
+    }
+
+    nav.ativo #hamburguer::before {
+        transform: rotate(135deg);
+    }
+
+    nav.ativo #hamburguer::after {
+        transform: rotate(-135deg);
+        top: -7px;
+    }
+}
